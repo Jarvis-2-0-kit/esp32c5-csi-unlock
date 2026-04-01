@@ -1,0 +1,6 @@
+idf_component_register(SRCS "wraith_node.c" INCLUDE_DIRS ".")
+target_link_libraries(${COMPONENT_LIB} INTERFACE
+    "-Wl,--wrap=get_channel_max_bandwidth"
+    "-Wl,--wrap=hal_mac_set_csi_cbw"
+    "-Wl,--wrap=ieee80211_set_phy_bw"
+)
