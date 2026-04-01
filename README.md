@@ -12,8 +12,9 @@ This project documents the reverse engineering process, provides the register ma
 |------|-------------|---------|-------------|--------|
 | HT20 (default) | 53 | 312.5 kHz | 16.6 MHz | ESP-IDF API |
 | **HE20 (unlocked)** | **245** | **78.125 kHz** | **19.1 MHz** | **Register 0x600A409C = 0x0A** |
-| HE40 (attempted) | N/A | — | — | Not achievable via registers |
-| HE80 (attempted) | N/A | — | — | Not achievable via registers |
+| HE40 (attempted) | N/A | — | — | Not achievable — see [Why HE40+ Fails](#why-he40-fails) |
+| HE80 (attempted) | N/A | — | — | Not achievable — see [Why HE40+ Fails](#why-he40-fails) |
+| HE160 (attempted) | N/A | — | — | Not achievable — see [Why HE40+ Fails](#why-he40-fails) |
 
 ## The Unlock
 
@@ -196,6 +197,62 @@ Your CSI callback will receive frames with `info->len / 2 = 245` subcarriers at 
 - **Indoor positioning** with more multipath components resolved
 - **Gesture recognition** with richer feature vectors
 - **Breathing / vital sign detection** with higher SNR
+
+## Why HE40+ Fails
+
+We conducted 4 rounds of systematic register experiments (100+ configurations tested) to attempt HE40 (484 sub), HE80 (996 sub), and HE160 (1992 sub) CSI capture. All failed. Here's why:
+
+### Root Cause: CBW20 Connection Limit
+
+The WiFi connection log reveals the answer:
+
+```
+wifi: phytype:CBW20-SGI, snr:54, maxRate:172
+```
+
+The ESP32-C5 STA negotiates **CBW20 (Channel Bandwidth 20 MHz)** with the access point regardless of the `WIFI_BW160` setting in firmware. The chip physically operates on a 20 MHz channel — it never receives 40/80/160 MHz frames, so there is no wider-band CSI data to capture.
+
+### What We Tried
+
+| Experiment | Registers Modified | Result |
+|-----------|-------------------|--------|
+| CSI mode register sweep | `0x600A409C` (all values 0x00–0x3E) | Max 245 sub (HE20) |
+| Channel config + CSI mode | `0x600A40A0` + `0x600A409C` | Max 245 sub |
+| A4 subcarrier count | `0x600A40A4` = 482/996/1992 | No effect |
+| CSI filter all bits | `0x600A411C` bits 0–15 | No effect |
+| BB channel BW | `0x600A4400` (from `phy_bb_cbw_chan_cfg`) | No effect on CSI |
+| Digital BW40 | `0x600A9C18` (from `phy_bb_bss_cbw40_dig`) | No effect on CSI |
+| BW selector | `0x600A0874` (from `phy_wifi_fbw_sel`) | No effect on CSI |
+| Combined BW40 | All BW registers + HE20 mode | Max 245 sub |
+| Combined BW80 | All BW registers + HE20 mode | Max 245 sub |
+| CSI area scan | `0x600A40E0–0x600A40F8` bit sweep | Max 245 sub |
+| Filter context | `0x600A42A4` bit sweep | No effect |
+| CBW implementation | Own `hal_mac_set_csi_cbw()` | Max 245 sub |
+
+Full experiment logs: [`dumps/`](dumps/)
+
+### The Empty Stub
+
+Disassembly of the proprietary blob reveals that `hal_mac_set_csi_cbw` exists but is an **empty function**:
+
+```asm
+00000000 <hal_mac_set_csi_cbw>:
+   0:   8082    ret
+```
+
+Espressif defined the interface for CSI channel bandwidth control but left the implementation empty. This suggests wider CSI bandwidth may be planned for a future ESP-IDF release or a future chip revision.
+
+### Conclusion
+
+The 245 subcarrier (HE20) limit is enforced at multiple levels:
+1. **WiFi STA connection** — negotiates CBW20 only
+2. **CSI capture hardware** — 20 MHz RF frontend for channel estimation
+3. **Firmware blob** — `hal_mac_set_csi_cbw` is unimplemented
+
+To achieve HE40+ CSI on ESP32-C5, Espressif would need to:
+- Enable CBW40/80/160 negotiation in STA mode
+- Implement `hal_mac_set_csi_cbw` in the blob
+- Potentially update the CSI capture hardware block (silicon change)
 
 ## Related Work
 
