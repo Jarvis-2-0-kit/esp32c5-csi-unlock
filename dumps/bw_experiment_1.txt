@@ -1,0 +1,239 @@
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0x15 (USB_UART_HPSYS),boot:0x59 (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x408556c0,len:0x15c0
+load:0x4084bba0,len:0xda4
+load:0x4084e5a0,len:0x3220
+entry 0x4084bbaa
+I (21) boot: ESP-IDF 44c77cbf 2nd stage bootloader
+I (21) boot: compile time Mar 30 2026 17:55:22
+I (22) boot: chip revision: v1.0
+I (22) boot: efuse block revision: v0.2
+I (25) boot.esp32c5: SPI Speed      : 80MHz
+I (29) boot.esp32c5: SPI Mode       : DIO
+I (32) boot.esp32c5: SPI Flash Size : 4MB
+I (36) boot: Enabling RNG early entropy source...
+I (41) boot: Partition Table:
+I (43) boot: ## Label            Usage          Type ST Offset   Length
+I (49) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (56) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (62) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (69) boot:  3 ota_0            OTA app          00 10 00020000 001e0000
+I (75) boot:  4 ota_1            OTA app          00 11 00200000 001e0000
+I (82) boot: End of partition table
+I (86) esp_image: segment 0: paddr=00020020 vaddr=420c0020 size=24058h (147544) map
+I (116) esp_image: segment 1: paddr=00044080 vaddr=40800000 size=0bf98h ( 49048) load
+I (125) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=b6c1ch (748572) map
+I (241) esp_image: segment 3: paddr=00106c44 vaddr=4080bf98 size=08858h ( 34904) load
+I (248) esp_image: segment 4: paddr=0010f4a4 vaddr=40814800 size=04570h ( 17776) load
+I (257) boot: Loaded app from partition at offset 0x20000
+I (257) boot: Disabling RNG early entropy source...
+I (268) MSPI Timing: Enter flash timing tuning
+I (269) cpu_start: Unicore app
+I (278) cpu_start: GPIO 12 and 11 are used as console UART I/O pins
+I (278) cpu_start: Pro cpu start user code
+I (278) cpu_start: cpu freq: 240000000 Hz
+I (280) app_init: Application information:
+I (284) app_init: Project name:     wraith_node
+I (288) app_init: App version:      1
+I (291) app_init: Compile time:     Mar 30 2026 17:55:18
+I (296) app_init: ELF file SHA256:  c52be07a8...
+I (301) app_init: ESP-IDF:          44c77cbf
+I (305) efuse_init: Min chip rev:     v1.0
+I (309) efuse_init: Max chip rev:     v1.99 
+I (313) efuse_init: Chip rev:         v1.0
+I (316) heap_init: Initializing. RAM available for dynamic allocation:
+I (323) heap_init: At 4081EF90 len 0003D610 (245 KiB): RAM
+I (328) heap_init: At 4085C5A0 len 00002F58 (11 KiB): RAM
+I (333) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM
+I (339) spi_flash: detected chip: generic
+I (342) spi_flash: flash io: dio
+I (346) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (351) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+W (358) spi_flash: CPU frequency is set to 240MHz. esp_flash_write_encrypted() will automatically limit CPU frequency to 80MHz during execution.
+I (379) main_task: Started on CPU0
+I (382) main_task: Calling app_main()
+I (397) WRAITH: === WRAITH v7 — BW EXPERIMENT ===
+I (399) pp: pp rom version: 78a72e9d5
+I (399) net80211: net80211 rom version: 78a72e9d5
+I (401) wifi:wifi driver task: 4085f3f8, prio:23, stack:6656, core=0
+I (411) wifi:wifi firmware version: 5d0a58b
+I (411) wifi:wifi certification version: v7.0
+I (413) wifi:config NVS flash: enabled
+I (416) wifi:config nano formatting: disabled
+I (420) wifi:mac_version:HAL_MAC_ESP32AX_752MP_ECO2,ut_version:N, band mode:0x3
+I (428) wifi:Init data frame dynamic rx buffer num: 32
+I (432) wifi:Init static rx mgmt buffer num: 5
+I (436) wifi:Init management short buffer num: 32
+I (441) wifi:Init dynamic tx buffer num: 32
+I (444) wifi:Init static tx FG buffer num: 2
+I (449) wifi:Init static rx buffer size: 2212 (rxctrl:64, csi:512)
+I (455) wifi:Init static rx buffer num: 10
+I (458) wifi:Init dynamic rx buffer num: 32
+I (463) wifi_init: rx ba win: 6
+I (465) wifi_init: accept mbox: 6
+I (468) wifi_init: tcpip mbox: 32
+I (471) wifi_init: udp mbox: 32
+I (474) wifi_init: tcp mbox: 6
+I (477) wifi_init: tcp tx win: 5760
+I (480) wifi_init: tcp rx win: 5760
+I (483) wifi_init: tcp mss: 1440
+I (486) wifi_init: WiFi IRAM OP enabled
+I (490) wifi_init: WiFi RX IRAM OP enabled
+I (493) wifi_init: WiFi SLP IRAM OP enabled
+I (498) phy_init: phy_version 108,cdfe9643,Dec  2 2025,11:38:11
+I (1101) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (1102) wifi:mode : sta (30:ed:a0:e0:45:bc)
+I (1103) wifi:enable tsf
+W (1110) wifi:(cap)capinfo:0x1111, Spectrum Management:1 
+W (1111) wifi:(vht)vhtcap:0xf8b69f6, sgi_rx(80mhz:1, 160/80+80mhz:1), stbc(tx:1, rx:1), ldpc_rx:1, bfmer(su:1, mu:1, nsts:3)
+W (1120) wifi:(vht)max.RxMPDULen:2(11454), max.RxAMPDULenExponent:7, max.RxAMPDUpre-EOFpaddingBytes:1048575(0xfffff)
+W (1130) wifi:(vht)rx(mcs:0xffaa, highest:0x0, highest_lgi_rate:0), tx(mcs:0xffaa, highest:0x2000, highest_lgi_rate:0), max_rate:144
+W (1141) wifi:(vht)bandwidth:1, chan_center_frq_seg0:42, chan_center_frq_seg1:50
+W (1149) wifi:(ht)primary_chann:36, ht2ndchan:1
+W (1153) wifi:(vht)BSS bandwidth:160MHz
+I (1156) wifi:(he)max.RxAMPDULenExponentExtension:2, max.RxAMPDUpre-EOFpaddingBytes:4194303(0x3fffff)
+I (1165) wifi:(mac)omc_ul_mu_data_disable_rx:1
+I (1170) wifi:(phy)ppe_thresholds_present:1, nominal_packet_padding:3
+I (1176) wifi:(phy)dcm tx(constellation:0, nss:0), dcm rx(constellation:0, nss:0)
+I (1183) wifi:(phy)rx_mcs_map:0xffaa, tx_mcs_map:0xffaa, stbc_tx:0, bfmer(su:1, mu:1), ldpc:1, max_rate:172
+I (1193) wifi:(phy)nsts:3, ru_index_bitmap:0x5(242:1, 484:0, 996:1, 2*996:0)
+I (1199) wifi:(phy)threshold_bits:36, nsts_num:3, ru_num:2, he_cap->len:39, ppe_threshold_len:17(6,11,4)
+I (1208) wifi:(ppe)RU242, NSTS0, PPE16:7, PPE8:7, nominal_packet_padding:0
+I (1215) wifi:(opr)len:7, TWT Required:0, VHT Opr Info Present:0, 6GHz Opr Info Present:0, Co-Hosted BSS:0(max_indicator:0), Basic MCS and NSS:0xfffc
+I (1228) wifi:(opr)len:7, Default PE Duration:4, TXOP RTS Threshold:0(0 us), ER-SU-Disable:1
+I (1236) wifi:(opr)len:7, BSS Color:9, disabled:0, Partial BSS Color:0
+W (1243) wifi:(regdomain)len:10, country:NL, env:all, ngroup:2
+I (1252) wifi:new:<36,0>, old:<1,0>, ap:<255,255>, sta:<36,0>, prof:1, snd_ch_cfg:0x10
+I (1258) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (1263) wifi:state: init -> auth (0xb0)
+I (1271) wifi:state: auth -> assoc (0x0)
+I (1274) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:1
+I (1278) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:1, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (1289) wifi:(he)max.RxAMPDULenExponentExtension:2, max.RxAMPDUpre-EOFpaddingBytes:4194303(0x3fffff)
+I (1298) wifi:(mac)omc_ul_mu_data_disable_rx:1
+I (1302) wifi:(phy)ppe_thresholds_present:1, nominal_packet_padding:3
+I (1308) wifi:(phy)dcm tx(constellation:0, nss:0), dcm rx(constellation:0, nss:0)
+I (1315) wifi:(phy)rx_mcs_map:0xffaa, tx_mcs_map:0xffaa, stbc_tx:0, bfmer(su:1, mu:1), ldpc:1, max_rate:172
+I (1325) wifi:(phy)nsts:3, ru_index_bitmap:0x5(242:1, 484:0, 996:1, 2*996:0)
+I (1332) wifi:(phy)threshold_bits:36, nsts_num:3, ru_num:2, he_cap->len:39, ppe_threshold_len:17(6,11,4)
+I (1341) wifi:(ppe)RU242, NSTS0, PPE16:7, PPE8:7, nominal_packet_padding:0
+I (1347) wifi:(opr)len:7, TWT Required:0, VHT Opr Info Present:0, 6GHz Opr Info Present:0, Co-Hosted BSS:0(max_indicator:0), Basic MCS and NSS:0xfffc
+I (1360) wifi:(opr)len:7, Default PE Duration:4, TXOP RTS Threshold:0(0 us), ER-SU-Disable:1
+I (1369) wifi:(opr)len:7, BSS Color:9, disabled:0, Partial BSS Color:0
+I (1375) wifi:state: assoc -> run (0x10)
+I (1379) wifi:(he)ppe_thresholds_present:1, nominal_packet_padding(rx:3, cfg:0)
+I (1386) wifi:(trc)phytype:CBW20-SGI, snr:53, maxRate:172, highestRateIdx:0
+W (1392) wifi:(trc)band:5G, phymode:3, highestRateIdx:0, lowestRateIdx:9, dataSchedTableSize:10
+I (1401) wifi:(trc)band:5G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:53, ampduState:wait operational
+I (1412) wifi:ifidx:0, rssi:-45, nf:-98, phytype(0x3, CBW20-SGI), phymode(0x7, 11ax), max_rate:172, he:1, vht:1, ht:1
+I (1422) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:5(4 us)
+I (1437) wifi:(extcap)mbssid:0, enhanced_mbssid_advertise:0, complete_nontxbssid_profiles:0, twt_responder: 1
+I (1438) wifi:connected with Sunrise_3833247, aid = 14, channel 36, BW20(ABOVE, C0), bssid = c4:eb:43:1f:a8:a3
+I (1448) wifi:security: WPA2-PSK, phy: ax, rssi: -45, cipher(pairwise:0x3, group:0x3), pmf:0
+I (1457) wifi:pm start, type: 1, twt_start:0
+
+I (1460) wifi:pm start, type:1, aid:0xe, trans-BSSID:c4:eb:43:1f:a8:a3, BSSID[5]:0xa3, mbssid(max-indicator:0, index:0), he:1
+I (1471) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (1480) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:1, bufsize:32, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (1491) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:2, bufsize:32, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (1502) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:3, bufsize:32, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (1513) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (1519) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:32, batimeout:0, txa_wnd:32
+I (1527) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:32, batimeout:0, txa_wnd:32
+I (1536) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:32, batimeout:0, txa_wnd:32
+W (1907) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x100a3a8, TALO:0x1f43ebc4, (ssn:1, win:64, cur_ssn:1), CONF:0xc0000001
+I (3420) esp_netif_handlers: sta ip: 192.168.1.144, mask: 255.255.255.0, gw: 192.168.1.1
+I (3420) WRAITH: Node 1 online
+I (3422) WRAITH: Waiting 5s for CSI to stabilize...
+I (8424) WRAITH: Current n_sub: 53, CSI count: 31
+W (8424) WRAITH: 
+W (8424) WRAITH: ========================================
+W (8424) WRAITH:   CSI BANDWIDTH REGISTER EXPERIMENTS
+W (8429) WRAITH: ========================================
+W (10434) WRAITH: BASELINE: n_sub=245, count=3
+W (10434) WRAITH: 
+W (10434) WRAITH: TEST 9C bits 0x00: 0x600A409C = 0x0000001A -> 0x00000000
+W (12435) WRAITH:   RESULT: n_sub=53, count=23
+W (12935) WRAITH: TEST 9C bits 0x02: 0x600A409C = 0x0000001A -> 0x00000002
+W (14935) WRAITH:   RESULT: n_sub=53, count=47
+W (15435) WRAITH: TEST 9C bits 0x04: 0x600A409C = 0x0000001A -> 0x00000004
+W (17435) WRAITH:   RESULT: n_sub=53, count=31
+W (17935) WRAITH: TEST 9C bits 0x06: 0x600A409C = 0x0000001A -> 0x00000006
+W (19935) WRAITH:   RESULT: n_sub=53, count=15
+W (20435) WRAITH: TEST 9C bits 0x08: 0x600A409C = 0x0000001A -> 0x00000008
+W (22435) WRAITH:   RESULT: n_sub=53, count=16
+W (22935) WRAITH: TEST 9C bits 0x0A: 0x600A409C = 0x0000001A -> 0x0000000A
+W (24935) WRAITH:   RESULT: n_sub=245, count=7
+W (25435) WRAITH: TEST 9C bits 0x0C: 0x600A409C = 0x0000001A -> 0x0000000C
+W (27435) WRAITH:   RESULT: n_sub=245, count=17
+W (27935) WRAITH: TEST 9C bits 0x0E: 0x600A409C = 0x0000001A -> 0x0000000E
+W (29935) WRAITH:   RESULT: n_sub=245, count=8
+W (30435) WRAITH: TEST 9C bits 0x10: 0x600A409C = 0x0000001A -> 0x00000010
+W (32435) WRAITH:   RESULT: n_sub=53, count=12
+W (32935) WRAITH: TEST 9C bits 0x12: 0x600A409C = 0x0000001A -> 0x00000012
+W (34935) WRAITH:   RESULT: n_sub=53, count=6
+W (35435) WRAITH: TEST 9C bits 0x14: 0x600A409C = 0x0000001A -> 0x00000014
+W (37435) WRAITH:   RESULT: n_sub=53, count=8
+W (37935) WRAITH: TEST 9C bits 0x16: 0x600A409C = 0x0000001A -> 0x00000016
+W (39935) WRAITH:   RESULT: n_sub=53, count=15
+W (40435) WRAITH: TEST 9C bits 0x18: 0x600A409C = 0x0000001A -> 0x00000018
+W (42435) WRAITH:   RESULT: n_sub=53, count=20
+W (42935) WRAITH: TEST 9C bits 0x1A: 0x600A409C = 0x0000001A -> 0x0000001A
+W (44935) WRAITH:   RESULT: n_sub=53, count=42
+W (45435) WRAITH: TEST 9C bits 0x1C: 0x600A409C = 0x0000001A -> 0x0000001C
+W (47435) WRAITH:   RESULT: n_sub=53, count=53
+W (47935) WRAITH: TEST 9C bits 0x1E: 0x600A409C = 0x0000001A -> 0x0000001E
+W (49935) WRAITH:   RESULT: n_sub=53, count=33
+W (50435) WRAITH: TEST 9C bits 0x20: 0x600A409C = 0x0000001A -> 0x00000020
+W (52435) WRAITH:   RESULT: n_sub=53, count=11
+W (52935) WRAITH: TEST 9C bits 0x22: 0x600A409C = 0x0000001A -> 0x00000022
+W (54935) WRAITH:   RESULT: n_sub=53, count=31
+W (55435) WRAITH: TEST 9C bits 0x24: 0x600A409C = 0x0000001A -> 0x00000024
+W (57435) WRAITH:   RESULT: n_sub=53, count=9
+W (57935) WRAITH: TEST 9C bits 0x26: 0x600A409C = 0x0000001A -> 0x00000026
+W (59935) WRAITH:   RESULT: n_sub=53, count=18
+W (60435) WRAITH: TEST 9C bits 0x28: 0x600A409C = 0x0000001A -> 0x00000028
+W (62435) WRAITH:   RESULT: n_sub=53, count=4
+W (62935) WRAITH: TEST 9C bits 0x2A: 0x600A409C = 0x0000001A -> 0x0000002A
+W (64935) WRAITH:   RESULT: n_sub=53, count=63
+W (65435) WRAITH: TEST 9C bits 0x2C: 0x600A409C = 0x0000001A -> 0x0000002C
+W (67435) WRAITH:   RESULT: n_sub=53, count=29
+W (67935) WRAITH: TEST 9C bits 0x2E: 0x600A409C = 0x0000001A -> 0x0000002E
+W (69935) WRAITH:   RESULT: n_sub=53, count=16
+W (70435) WRAITH: TEST 9C bits 0x30: 0x600A409C = 0x0000001A -> 0x00000030
+W (72435) WRAITH:   RESULT: n_sub=53, count=18
+W (72935) WRAITH: TEST 9C bits 0x32: 0x600A409C = 0x0000001A -> 0x00000032
+W (74935) WRAITH:   RESULT: n_sub=53, count=2
+W (75435) WRAITH: TEST 9C bits 0x34: 0x600A409C = 0x0000001A -> 0x00000034
+W (77435) WRAITH:   RESULT: n_sub=53, count=22
+W (77935) WRAITH: TEST 9C bits 0x36: 0x600A409C = 0x0000001A -> 0x00000036
+W (79935) WRAITH:   RESULT: n_sub=53, count=6
+W (80437) WRAITH: TEST 9C bits 0x38: 0x600A409C = 0x0000001A -> 0x00000038
+W (82437) WRAITH:   RESULT: n_sub=53, count=16
+W (82937) WRAITH: TEST 9C bits 0x3A: 0x600A409C = 0x0000001A -> 0x0000003A
+W (84937) WRAITH:   RESULT: n_sub=53, count=4
+W (85437) WRAITH: TEST 9C bits 0x3C: 0x600A409C = 0x0000001A -> 0x0000003C
+W (87437) WRAITH:   RESULT: n_sub=245, count=16
+W (87937) WRAITH: TEST 9C bits 0x3E: 0x600A409C = 0x0000001A -> 0x0000003E
+W (89937) WRAITH:   RESULT: n_sub=245, count=4
+W (90437) WRAITH: 
+W (90437) WRAITH: === 0x600A40A0 experiments (orig: 0x3A064000) ===
+W (90437) WRAITH: TEST A0 +bit0: 0x600A40A0 = 0x3A065000 -> 0x3A064001
+W (92440) WRAITH:   RESULT: n_sub=53, count=18
+W (92940) WRAITH: TEST A0 +bit1 (BW40?): 0x600A40A0 = 0x3A064000 -> 0x3A064002
+W (94940) WRAITH:   RESULT: n_sub=53, count=10
+W (95440) WRAITH: TEST A0 +bit2 (BW80?): 0x600A40A0 = 0x3A064000 -> 0x3A064004
+W (97440) WRAITH:   RESULT: n_sub=53, count=62
+W (97940) WRAITH: TEST A0 +bit3 (BW160?): 0x600A40A0 = 0x3A064000 -> 0x3A064008
+W (99940) WRAITH:   RESULT: n_sub=53, count=27
+W (100440) WRAITH: TEST A0 bit15+14: 0x600A40A0 = 0x3A064000 -> 0x3A06C000
+W (102440) WRAITH:   RESULT: n_sub=53, count=11
+W (102940) WRAITH: TEST A0 bit15: 0x600A40A0 = 0x3A064000 -> 0x3A068000
+W (104940) WRAITH:   RESULT: n_sub=53, count=23
+W (105440) WRAITH: TEST A0 ch byte +2: 0x600A40A0 = 0x3A064000 -> 0x3A084000
+W (107440) WRAITH:   RESULT: n_sub=53, count=3
+W (107940) WRAITH: TEST A0 ch byte wide: 0x600A40A0 = 0x3A064000 -> 0x3A0E4000
+W (109940) WRAITH:   RESULT: n_sub=53, count=21
